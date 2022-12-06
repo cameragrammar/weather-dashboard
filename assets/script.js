@@ -11,8 +11,7 @@ $(document).ready(function () {
     
      else {
       
-      $("#progressBar").attr("style", "display:none");
-      $("#main").removeAttr("style");
+            $("#main").removeAttr("style");
       if (cityHistory[0]) {
         getCurrentWeather(cityHistory[cityHistory.length -1]);
         getFiveDayForecast(cityHistory[cityHistory.length-1]);
