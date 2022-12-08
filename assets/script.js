@@ -18,8 +18,13 @@ var apiKey = "d064d50bdad3977fc6ae9d07fb12482e"
 //display today's weather
 function displayWeather(data, searchCity) {
     var today = document.querySelector("#today");
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var todayDate = month + "/" + day + "/" + year;
     var output = "";
-    output += "<h2> Today's weather for " + searchCity + "</h2>";
+    output += "<h2> Today's weather for " + searchCity +" ("+todayDate +  ")</h2>";
     output += "Temperature " + data.main.temp + "°F <br>";
     output += "Humidity " + data.main.humidity + "% <br>";
     output += "Wind Speed " + data.wind.speed + "MPH <br>";
@@ -42,12 +47,18 @@ function displayExtendedForecast(data, searchCity) {
         output += "</div>";
         output += "</div>";
         output += "<div class='content'>";
-        var year= data.list[i].dt_txt.substring(0,4);
+        var date = new Date( );
+        date.setDate(date.getDate() + (i + 1));
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var date = month + "/" + day + "/" + year;
+        /*var year= data.list[i].dt_txt.substring(0,4);
         var month= data.list[i].dt_txt.substring(5,7);
         var day= data.list[i].dt_txt.substring(8,10);
-        var date = month+"/"+day+"/"+year;
+        var date = month+"/"+day+"/"+year;*/
         output += "<p class='subtitle is-6'> Date " + date + "</p>";
-        output += "<p class='subtitle is-6'> Date " + data.list[i].dt_txt + "</p>";
+        output += "<p class='subtitle is-6'> <img src = 'http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png'></p>";
         output += "<p class='subtitle is-6'> Temperature " + data.list[i].main.temp + "°F </p>";
         output += "<p class='subtitle is-6'> Humidity " + data.list[i].main.humidity + "% </p>";
         output += "</div>";
@@ -59,6 +70,8 @@ function displayExtendedForecast(data, searchCity) {
     output += "</div>";
    document.querySelector("#five-day-output").innerHTML = output;
 }
+
+//http://openweathermap.org/img/wn/10d@2x.png
 
 //extract lat and lon from api
 function getLatLon(data, cityName) {
