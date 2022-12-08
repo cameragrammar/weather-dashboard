@@ -6,92 +6,165 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <title>Weather Dashboard</title>
 </head>
 
 <body>
   
-
-  <div class="container">
-    <div class="current-info">
-
-    <div class="date-container">
-      <div class="time" id="time">
-        12:30 <span id="am-pm">PM</span>
-      </div>
-
-      
-      
-      <div class="date" id="date">
-        Tuesday, Dec 6
-      </div>
-
-
-
-      <div class="others" id="current-weather-items">
-        
-          
-        
-     
-      
+  <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <h1 class="navbar-item title"> Weather Dashboard: Search for the 5-Day Forecast of Any City</h1>
+      <h2></h2>
+        <div class="date-container">
+          <div class="time" id="time">
+            </div>
+       </div>
+    
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item" id="headerCity"></div>
       </div>
     </div>
+  </nav>
 
- 
 
-
-<div class="future-forecast">
-  <div class="today" id="current-temp">
-    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-    <div class="other">
-        <div class="day">Monday</div>
-        <div class="temp">Night - 25.3&#176; F</div>
-        <div class="temp">Day - 35.7&#176; F</div>
+<!-- SEARCH BAR -->
+<div class="container">
+  <div class="columns">
+      <div class="column is-one-third">
+          <div class="box">
+              <h1 class="title">Search for a city</h1>
+              <input id="user-input" class="input" type="text" placeholder="Enter a city name">
+              <button id="search-button" class="button is-info is-danger">Search</button>
+          </div>
+          <div id="history-container" class="box is-flex is-flex-direction-column">
+            <h1 class="title">Search History</h1>
+        </div>
+    </div>   
     </div>
-  
+    
+    <div class="column">
+      <div id="output">
+      </div>
+      <div id="five-day-output" class="custom-container">
+      </div>
+  </div>
 </div>
-<div class="weather-forecast" id="weather-forecast">
-  <div class="weather-forecast-item">
-    <div class="day">Tuesday</div>
-    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-    <div class="temp">Night - 25.3&#176; F</div>
-    <div class="temp">Day - 35.7&#176; F</div>
-  </div>
-  <div class="weather-forecast-item">
-    <div class="day">Wednesday</div>
-    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-    <div class="temp">Night - 25.3&#176; F</div>
-    <div class="temp">Day - 35.7&#176; F</div>
-  </div>
-  <div class="weather-forecast-item">
-    <div class="day">Thursday</div>
-    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon"> 
-    <div class="temp">Night - 25.3&#176; F</div>
-    <div class="temp">Day - 35.7&#176; F</div>
-  </div>
-  <div class="weather-forecast-item">
-    <div class="day">Friday</div>
-    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">   
-    <div class="temp">Night - 25.3&#176; F</div>
-    <div class="temp">Day - 35.7&#176; F</div>
-  </div>
-  <div class="weather-forecast-item">
-    <div class="day">Saturday</div>
-    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-    <div class="temp">Night - 25.3&#176; F</div>
-    <div class="temp">Day - 35.7&#176; F</div>
-  </div>
-  <div class="weather-forecast-item">
-    <div class="day">Sunday</div>
-    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
-    <div class="temp">Night - 25.3&#176; F</div>
-    <div class="temp">Day - 35.7&#176; F</div>
-  </div>
+</div>   
+            
+
+ <!-- 5 Day Forecast Cards -->   
+<div class="container">
+  <div class="columns">
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-1">5 Day Forecast</p>
+            </div>
+          </div>
+          <div class="content">
+            <div class="columns">
+              <div class="column">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-5">Day 1</p>
+                      </div>
+                    </div>
+                    <div class="content" id="day-1">
+                      <p class="subtitle is-6">Date</p>
+                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Humidity</p>
+                      <p class="subtitle is-6">Wind Speed</p>
+                      <p class="subtitle is-6">UV Index</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-5">Day 2</p>
+                      </div>
+                    </div>
+                    <div class="content" id="day-2">
+                      <p class="subtitle is-6">Date</p>
+                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Humidity</p>
+                      <p class="subtitle is-6">Wind Speed</p>
+                      <p class="subtitle is-6">UV Index</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-5">Day 3</p>
+                      </div>
+                    </div>
+                    <div class="content" id="day-3">
+                      <p class="subtitle is-6">Date</p>
+                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Humidity</p>
+                      <p class="subtitle is-6">Wind Speed</p>
+                      <p class="subtitle is-6">UV Index</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-5">Day 4</p>
+                      </div>
+                    </div>
+                    <div class="content" id="day-4">
+                      <p class="subtitle is-6">Date</p>
+                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Humidity</p>
+                      <p class="subtitle is-6">Wind Speed</p>
+                      <p class="subtitle is-6">UV Index</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-5">Day 5</p>
+                      </div>
+                    </div>
+                    <div class="content" id="day-5">
+                      <p class="subtitle is-6">Date</p>
+                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Humidity</p>
+                      <p class="subtitle is-6">Wind Speed</p>
+                      <p class="subtitle is-6">UV Index</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 </div>
 
+
+
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
   
-  <script src="assets/script.js"></script>
+<script src="assets/script.js"></script>
   
 </body>
 
