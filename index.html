@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <title>Weather Dashboard</title>
 </head>
@@ -35,17 +34,17 @@
       <div class="column is-one-third">
           <div class="box">
               <h1 class="title">Search for a city</h1>
-              <input id="user-input" class="input" type="text" placeholder="Enter a city name">
-              <button id="search-button" class="button is-info is-danger">Search</button>
+              <input id="searchInput" class="input" type="text" placeholder="Enter a city name">
+              <button id="searchBtn" class="button is-info is-danger">Search</button>
           </div>
           <div id="history-container" class="box is-flex is-flex-direction-column">
             <h1 class="title">Search History</h1>
         </div>
     </div>   
     </div>
-    
     <div class="column">
       <div id="output">
+        <div class="today" id="today"></div>
       </div>
       <div id="five-day-output" class="custom-container">
       </div>
@@ -77,10 +76,9 @@
                     </div>
                     <div class="content" id="day-1">
                       <p class="subtitle is-6">Date</p>
-                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Temperature</p>
                       <p class="subtitle is-6">Humidity</p>
                       <p class="subtitle is-6">Wind Speed</p>
-                      <p class="subtitle is-6">UV Index</p>
                     </div>
                   </div>
                 </div>
@@ -95,10 +93,9 @@
                     </div>
                     <div class="content" id="day-2">
                       <p class="subtitle is-6">Date</p>
-                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Temperature</p>
                       <p class="subtitle is-6">Humidity</p>
                       <p class="subtitle is-6">Wind Speed</p>
-                      <p class="subtitle is-6">UV Index</p>
                     </div>
                   </div>
                 </div>
@@ -113,10 +110,9 @@
                     </div>
                     <div class="content" id="day-3">
                       <p class="subtitle is-6">Date</p>
-                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Temperature</p>
                       <p class="subtitle is-6">Humidity</p>
                       <p class="subtitle is-6">Wind Speed</p>
-                      <p class="subtitle is-6">UV Index</p>
                     </div>
                   </div>
                 </div>
@@ -131,10 +127,9 @@
                     </div>
                     <div class="content" id="day-4">
                       <p class="subtitle is-6">Date</p>
-                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Temperature</p>
                       <p class="subtitle is-6">Humidity</p>
                       <p class="subtitle is-6">Wind Speed</p>
-                      <p class="subtitle is-6">UV Index</p>
                     </div>
                   </div>
                 </div>
@@ -149,10 +144,9 @@
                     </div>
                     <div class="content" id="day-5">
                       <p class="subtitle is-6">Date</p>
-                      <p class="subtitle is-6">Temp</p>
+                      <p class="subtitle is-6">Temperature</p>
                       <p class="subtitle is-6">Humidity</p>
                       <p class="subtitle is-6">Wind Speed</p>
-                      <p class="subtitle is-6">UV Index</p>
                     </div>
                   </div>
                 </div>
