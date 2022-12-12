@@ -12,11 +12,17 @@ var forecast = document.querySelector("#forecast");
 //var for api key
 var apiKey = "d064d50bdad3977fc6ae9d07fb12482e"
 
-//local storage
+//local storage city search history
+var cityHistory = [];
+if(localStorage.getItem("cityHistory")!= null){
+    cityHistory = JSON.parse (localStorage.getItem("cityHistory"));
+} 
+
 
 
 //display today's weather
 function displayWeather(data, searchCity) {
+    console.log(data);
     var today = document.querySelector("#today");
     var date = new Date();
     var year = date.getFullYear();
@@ -24,10 +30,21 @@ function displayWeather(data, searchCity) {
     var day = date.getDate();
     var todayDate = month + "/" + day + "/" + year;
     var output = "";
-    output += "<h2> Today's weather for " + searchCity +" ("+todayDate +  ")</h2>";
+    output += "<div class='column'>";
+    output += "<div class='card'>";
+    output += "<div class='card-content'>";
+    output += "<div class='media'>";
+    output += "<div class='media-content'>";
+    output += "<h1> Today's weather for " + searchCity +" ("+todayDate +  ")</h1>";
+    output += "<p class='subtitle is-6'> <img src = 'http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png'></p>";
     output += "Temperature " + data.main.temp + "°F <br>";
     output += "Humidity " + data.main.humidity + "% <br>";
     output += "Wind Speed " + data.wind.speed + "MPH <br>";
+    output += "</div>";
+    output += "</div>";
+    output += "</div>";
+    output += "</div>";
+    output += "</div>";
     today.innerHTML = output;
     getLatLon(data, searchCity);
 }
@@ -124,18 +141,25 @@ function searchCity(event) {
     var cityName = searchInput.value.trim();
     if (cityName) {
         getWeather(cityName);
-        searchHistory.push(cityName);
+        cityHistory.push(cityName);
+        saveSearch();
         searchInput.value = "";
     } else {
         alert("Please enter a city");
     }
-    saveSearch();
-    pastSearch(cityName);
+    //pastSearch(cityName);
 }
 
 //save search history
 function saveSearch() {
-    localStorage.setItem("search", JSON.stringify(searchHistory));
+    localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
+    console.log (cityHistory);
+    let history = document.querySelector("#history-container");
+    let output = "<h1 class='title'>Search History</h1>";
+    for (let i = 0; i < cityHistory.length; i++) {
+        output += "<p class='list-group-item' id='history-item'>" + cityHistory[i] + "</p>";
+    }
+    history.innerHTML = output;
 }
 
 document.querySelector("#searchBtn").addEventListener("click", searchCity);
